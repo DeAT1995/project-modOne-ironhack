@@ -1,10 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+.header{
+  border-bottom: 1px solid #E2E8F0;
+}
+.navbar {
+  background-color: rgb(42, 0, 77);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #101010;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 60px;
+
+}
+
+.nav-item {
+  margin-left: 4rem;
+}
+
+.nav-link{
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #4a25af;
+}
+
+
+.nav-logo {
+  font-size: 60px;
+  font-weight: 500;
+  color: #c24a9a;
+}
+
+.logo-img{
+  width:100px;
+  margin-left: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 body, html {
     height: 100%;
     font-family:fantasy ; 
 }
 
 .hero-image{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://files.aredacao.com.br/upload/content/cJp1I3m9jfBhnh8mXBiLgP4GqZZVqzzhuMAhj-UL");
+   /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://files.aredacao.com.br/upload/content/cJp1I3m9jfBhnh8mXBiLgP4GqZZVqzzhuMAhj-UL");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -13,7 +106,9 @@ body, html {
 
     display: flex;
     text-align: center;
-    align-items: center;
+    align-items: center;*/
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(252,70,107,1) 0%, rgba(63,94,251,1) 100%);
 } 
 
 .game-title {
@@ -24,7 +119,7 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
     color: rgba(255, 255, 255, 0.8);
-    background-color:rgba(6, 105, 21, 0.7);
+    background-color:rgba(70, 46, 179, 0.7);
     border-radius: 20px;
     padding:15px;
     padding-top: 20px;
@@ -49,13 +144,13 @@ body, html {
   }
 
   .game-box {
-    border: 5px solid rgb(39, 131, 39);
-    background-color: rgba(130, 168, 120, 0.6) ;
-    border-radius: 3px;
+    border: 7px solid rgb(42, 0, 77);
+    background-color: rgba(0, 245, 33, 0.6) ;
+    border-radius: 5px;
   }
 
   #game-canvas{
     margin-left: 18%;
     margin-right: 18%;
-    padding-top: 200px;
+    padding-top: 140px;
   }
