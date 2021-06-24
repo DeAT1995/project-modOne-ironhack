@@ -1,0 +1,61 @@
+body, html {
+    height: 100%;
+    font-family:fantasy ; 
+}
+
+.hero-image{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://files.aredacao.com.br/upload/content/cJp1I3m9jfBhnh8mXBiLgP4GqZZVqzzhuMAhj-UL");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+} 
+
+.game-title {
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.8);
+    background-color:rgba(6, 105, 21, 0.7);
+    border-radius: 20px;
+    padding:15px;
+    padding-top: 20px;
+    text-decoration: underline rgba(245, 241, 241, 0.7) ;
+    display: flex;
+    text-align: center;
+    align-items: center;
+  }
+
+  .game-intro {
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.8);
+    background-color:;
+    border-radius: ;
+    display: flex;
+    text-align: center;
+    align-items: center;
+  }
+
+  .game-box {
+    border: 5px solid rgb(39, 131, 39);
+    background-color: rgba(130, 168, 120, 0.6) ;
+    border-radius: 3px;
+  }
+
+  #game-canvas{
+    margin-left: 18%;
+    margin-right: 18%;
+    padding-top: 200px;
+  }
