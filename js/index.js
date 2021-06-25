@@ -50,12 +50,11 @@
 
 window.onload = () => {
     document.getElementById("start-game").onclick = () => {
-                startGame();
-        
+      startGame();
     };
 
     function startGame() {
-        console.log(player.img);
+        console.log(player);
         player.draw();
         
     }
@@ -81,7 +80,7 @@ window.onload = () => {
             ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
         }
     }
-    const player = new Emu('../images/emu.png' , 200,100,30,30);
+    const player = new Emu('./images/emu.png' , 20,142,115,115);
 }
 
 //funcções que provavelmente existirão
