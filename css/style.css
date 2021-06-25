@@ -13,7 +13,7 @@ body, html {
 }
 
 .header{
-  border-bottom: 2px solid #E2E8F0;
+  border-bottom: 4px solid #000000;
 }
 
 .navbar {
@@ -21,7 +21,7 @@ body, html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.4rem;
 }
 
 li {
@@ -55,6 +55,7 @@ li {
   font-size: 1.8rem;
   font-weight: 400;
   color: #4a25af;
+  text-decoration: underline;
 }
 
 
@@ -74,10 +75,10 @@ li {
   display: none;
 }
 
-.int-text:hoover .hidden-text{
+/*.int-text:hoover .hidden-text{
   color:black;
   display:block;
-}
+}*/
 
 
 .game-play{
@@ -95,8 +96,22 @@ li {
     background: radial-gradient(circle, rgba(252,70,107,1) 0%, rgba(63,94,251,1) 100%);
 } 
 
+  
+  #start-game{
+    color:rgba(252,70,107,1);
+    background-color: darkslateblue;
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    border:4px solid rgba(252,70,107,1);
+    border-radius: 3px;
+    text-decoration: underline;
+    padding: 8px;
+    margin-left: 42%;
+    margin-top: 15px;
+  } 
+
   #game-box {
-    border: 7px solid rgb(42, 0, 77);
+    border: 7px solid rgb(2, 2, 2);
     background-color: rgba(0, 245, 33, 0.6) ;
     height: 100%;
     border-radius: 7px;
@@ -104,22 +119,9 @@ li {
     
   }
 
-  #start-game{
-    color:rgba(252,70,107,1);
-    background-color: darkslateblue;
-    font-size: 40px;
-    font-family: 'Roboto', sans-serif;
-    border:4px solid rgba(252,70,107,1);
-    text-decoration: underline;
-    padding: 8px;
-    margin-left: 41%;
-    margin-top: 15px;
-  } 
-
-
   #game-canvas{
     margin-left: 18%;
     margin-right: 18%;
-    padding-top: 18px;
+    padding-top: 16px;
     padding-bottom: 20px;
   }

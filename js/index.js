@@ -46,7 +46,8 @@
     }
     const player = new Emu('/images/emu-icon edited.png', 200,100, 30, 30); 
 }
-*/
+*/ 
+
 
 window.onload = () => {
     document.getElementById("start-game").onclick = () => {
