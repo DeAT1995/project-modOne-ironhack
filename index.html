@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,25 +11,27 @@
 <body>
     <header class="header">
         <nav class="navbar">
-            <div class="nav-logo"><img class="logo-img" src="images/1807730.png" alt="emu-logo-game">PROJETO GAME</div>
+            <div class="nav-logo"><img class="logo-img" src="images/1807730.png" alt="emu-logo-game">PROJECT GAME</div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">HOW TO PLAY</a>
+                    <div class="int-text"><a href="#" class="nav-link">HOW TO PLAY</a></div>
+                    <div class="hidden-text">show this text when the mouse being on the tag HOW TO PLAY</div>
+                    <!--NAO ESTÁ FUNCIONANDO O TEXTO QUANDO PASSA O MOUSE EM CIMA-->
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">ABOUT THE GAME</a>
+                    <div class="int-text"><a href="#" class="nav-link">ABOUT THE GAME</a></div>
+                    <div class="hidden-text">show this text when the mouse being on the tag HOW TO PLAY</div>
                 </li>
-               
             </ul>
         </nav>
 </header>
-    <div class="hero-image">
-       <!-- <div class="game-title">
-            <h1>PROJETO GAME</h1></div>
-        <div class="game-intro"><p>aqui vai a descrição do jogo e como jogar </p></div>
- -->       <div id="game-canvas"><canvas class="game-box" width="1000px" height="400px"></canvas></div>
-        
+    <div class="game-play">
+            <div id="game-canvas"><canvas id="game-box" width="1000px" height="400px"></canvas>
+            <button id="start-game">START GAME</button> </div>
+                    
     </div>
+    <script src="./js/index.js"></script>
 </body>
+
 </html>
 
