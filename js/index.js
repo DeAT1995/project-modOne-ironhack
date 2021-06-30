@@ -49,9 +49,9 @@ window.onload = () => {
         clearCanvas();
         player.draw();
         updateObstacles();
-        checkGameOver();
-
         animationId = requestAnimationFrame(updateCanvas);
+        checkGameOver();
+        checkVacine();
     }
 
 
@@ -155,6 +155,8 @@ window.onload = () => {
         }
     }
 
+    const obstacleCloroquina = [];
+    const obstacleVacina = [];
     const obstacles = [];
 
     //const obstacleCloroquina = new Obstacle('./images/medicini-icon-pill.png' , 900, 0, 100, 100);
@@ -168,9 +170,9 @@ window.onload = () => {
         
         if ( numberVar % 2) {
             //pq nao posso criar uma variavel dentro de um elemento do if??
-         return obstacles.push(new Obstacle('./images/vaccine-icon.png' , eixoX, eixoY, 70, 70));
+         return obstacleVacina.push(new Obstacle('./images/vaccine-icon.png' , eixoX, eixoY, 70, 70));
         } else {
-        return obstacles.push(new Obstacle('./images/medicini-icon-pill.png' , eixoX, eixoY, 80, 80));}  
+        return obstacleCloroquina.push(new Obstacle('./images/medicini-icon-pill.png' , eixoX, eixoY, 80, 80));}  
        }
 
     function updateObstacles(){
@@ -183,6 +185,16 @@ window.onload = () => {
         }
     }
 
+    function checkVacine(){
+        /*const taked = obstacleVacina.some(function(obstacle){
+            return player.crashWith(obstacle);
+        });
+        if (taked){
+            console.log("vacinado")
+            //fazer um score e conectalo com  o checkVacine para 
+            //aparecer no window a quantidade de pontuação feita ate o momento
+            */
+    }
     function checkGameOver(){
         const crashed = obstacles.some(function(obstacle){
             return player.crashWith(obstacle);
