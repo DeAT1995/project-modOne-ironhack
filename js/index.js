@@ -35,9 +35,6 @@ window.onload = () => {
     function startGame() {
         player.draw();
         updateCanvas();
-       // createObstacle.draw();
-       //obstacleCloroquina.draw();
-        //obstacleVirus.draw(); 
         updateObstacles();
 
     }
@@ -45,23 +42,24 @@ window.onload = () => {
     const canvas = document.getElementById("game-box");
     const ctx = canvas.getContext('2d');
     let frames = 0;
-
+    let animationId = null; //criado
 
     function updateCanvas(){
         frames += 1;
-       clearCanvas();
+        clearCanvas();
         player.draw();
-        //obstacleCloroquina.draw();
-        //obstacleVirus.draw();
         updateObstacles();
+        checkGameOver();
 
         animationId = requestAnimationFrame(updateCanvas);
     }
+
 
     function clearCanvas(){
         ctx.clearRect(0,0, canvas.width, canvas.height);
     }
 
+    
     class Emu {
         constructor(source, x, y, w, h){
             this.posX= x;
@@ -69,13 +67,12 @@ window.onload = () => {
             this.width= w;
             this.height=h;
             this.speed = 15;
-//adicionei o speed ,velocidade do emu na tela 
 
             const img = new Image();
             img.src = source;
             img.onload =() => {
             this.img = img;
-//            this.draw();
+
         }
         }
         draw(){
@@ -91,40 +88,33 @@ window.onload = () => {
             this.posY += this.speed;
         }
         }
-    }
-    const player = new Emu('./images/emu.png' , 15,142,110,110);
-/*
-    class Obstacle {
-        constructor(source,x, y, w, h){
-            this.posX = x;
-            this.posY = y;
-            this.width = w;
-            this.height = h;
-            //this.speed =; //definir velocidade
+
+        top(){
+            return this.posY;
         }
-        draw(){
-            ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
+
+        bottom(){
+            return this.posY+ this.height;
+        }
+
+        left(){
+            return this.posX;
+        }
+
+        right(){
+            return this.posX + this.width;
+        }
         
+       
+        crashWith(obstacle) {
+            return !(
+            this.bottom() < obstacle.top() ||
+            this.top() > obstacle.bottom() ||
+            this.right() < obstacle.left() ||
+            this.left() > obstacle.right());
+          }
     }
-
-    const obstacle = new Obstacle('./images/pill-game.png', 100, 100, 50, 50);*/
-
-    /*class Obstacle {
-        constructor(x){
-            this.x = 900;
-            this.y = y;
-            this.width = w;
-            this.height = h;
-        }
-
-        createObstacle(){
-            this.imgPill = new Image();
-            this.imgPill.src = './images/pill-game.png';
-            context.drawImage(this.imgPill, this.x, this.y, this.width, this.height);
-        }
-
-
-    }*/
+    const player = new Emu('./images/emu.png' , 15,142,100,100);
 
 
     class Obstacle {
@@ -133,13 +123,12 @@ window.onload = () => {
             this.posY= y;
             this.width= w;
             this.height=h;
-            this.speed = 10;
+            this.speed = 3;
 
             const img = new Image();
             img.src = source;
-            img.onload =() => {
             this.img = img;
-            }
+            
         }
 
         draw(){
@@ -147,40 +136,68 @@ window.onload = () => {
         }
         
         move(){
-            //como passar mais de uma coordenada (x e y) para o obstacle ??
             this.posX -= this.speed;
+        }
+        top(){
+            return this.posY;
+        }
+
+        bottom(){
+            return this.posY+ this.height;
+        }
+
+        left(){
+            return this.posX;
+        }
+
+        right(){
+            return this.posX + this.width;
         }
     }
 
     const obstacles = [];
 
-    const obstacleCloroquina = new Obstacle('./images/medicini-icon-pill.png' , 900, 0, 100, 100);
-    const obstacleVirus = new Obstacle('./images/virus-icon.png' , 900, 200, 50, 50);
+    //const obstacleCloroquina = new Obstacle('./images/medicini-icon-pill.png' , 900, 0, 100, 100);
     //const obstacleVacina = new Obstacle('./images/vaccine-icon.png' , 700, 200, 100, 100);
 
     function createObstacle(){
         const eixoX = 1000;//final do canvas
         let eixoY = Math.floor(Math.random() * 400); //variável, número aleatorio multiplicado pelo tamanho do canvas no eixo y
 
-        obstacles.push(new Obstacle('./images/medicini-icon-pill.png' , eixoX, eixoY, 100, 100)); // ver como criar para mais de um obstaculo, pois na atividade do car ele tinha apenas um tipo de obstaculo
-        obstacles.push(new Obstacle('./images/virus-icon.png' , eixoX, eixoY, 50, 50));
-        obstacles.push(new Obstacle('./images/vaccine-icon.png' , eixoX, eixoY, 100, 100));    
-    }
+        let numberVar = Math.floor(Math.random()*400); // variável para criar um número aleatório para poder revesar os obstaculos a serem apresnetados na tela 
+        
+        if ( numberVar % 2) {
+            //pq nao posso criar uma variavel dentro de um elemento do if??
+         return obstacles.push(new Obstacle('./images/vaccine-icon.png' , eixoX, eixoY, 70, 70));
+        } else {
+        return obstacles.push(new Obstacle('./images/medicini-icon-pill.png' , eixoX, eixoY, 80, 80));}  
+       }
 
     function updateObstacles(){
         obstacles.forEach((obstacle) =>{
-            console.log(obstacle)
         obstacle.move();
-        obstacle.draw([0]);
-        })
-
-        if (frames % 80 === 0){ //parece que mesmo eu editando o valor continua a mesma velocidade
+        obstacle.draw();
+        });
+        if (frames % 80 === 0){ 
             createObstacle();
         }
     }
+
+    function checkGameOver(){
+        const crashed = obstacles.some(function(obstacle){
+            return player.crashWith(obstacle);
+        });
+        if (crashed){
+            console.log("crashed")
+            cancelAnimationFrame(animationId);
+        }
+    
+    }
+    
+
 }
 
-
+   
 
 //funcções que provavelmente existirão
 //function clearCanvas(){} -- ok
@@ -190,3 +207,4 @@ window.onload = () => {
 //colidir com um obstaculo
 //pontuação de acordo com o obstaculo
 //score do jogo
+//game over
