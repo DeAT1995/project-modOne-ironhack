@@ -7,18 +7,21 @@
 // criar obstaculos aleatórios na tela -- ok
 //definir velocidade dos obstaculos --ok
 
-//arrumar os obstaculos --ok
-    //fazer um score
-    //vacina soma ponto
-    //fazer a img da vacina sumir quando bater na ema 
+    //arrumar os obstaculos --ok
+    //fazer um score --ok
+    //vacina soma ponto --------------
+    //fazer a img da vacina sumir quando bater na ema --ok
     //cloroquina GAME OVER --ok
     //restart criado --ok 
-    //fazer a tela voltar do inicio no restart
-    //rodar um score
+    //rodar um score --ok
+    //fazer o score aparecer a pontuação do player ----------
+    //fazer a tela voltar do inicio no restart -------------
 
 
 //adicionar um evento de mouse quando passar em cima dos li's para dar info sobre o jogo
 //redigir orientações sobre o jogo no README.md
+//fazer a apresentação em slides do jogo 
+
 
 
 window.onload = () => {
@@ -42,7 +45,6 @@ window.onload = () => {
         player.draw();
         updateCanvas();
         updateObstacles();
-        //score();
     }
 
     const canvas = document.getElementById("game-box");
@@ -58,7 +60,6 @@ window.onload = () => {
         score();
         animationId = requestAnimationFrame(updateCanvas);
         checkGameOver();
-        //checkVacine();
         takeVacine();
         
 
@@ -193,23 +194,9 @@ window.onload = () => {
         }
     }
 
-    function checkVacine(){
-        const taked = obstacleVacina.some(function(obstacle){
-            return player.crashWith(obstacle);
-        });
-        if (taked){
-            console.log("vacinado");
-            //fazer um score e conectalo com  o checkVacine para 
-            //aparecer no window a quantidade de pontuação feita ate o momento
-        }   
-    }
 
-        /*
-
-    }*/
-
+       
     function takeVacine(){
-        console.log("crash with vacina")
         let taked = obstacleVacina.some(function(vacine){
             return player.crashWith(vacine);
         });
@@ -217,9 +204,12 @@ window.onload = () => {
         if (taked){
             obstacleVacina.forEach((element,index) =>{
                 obstacleVacina.splice(index, 1);
-                })
+                //points += 1; // como faço para essa pontuação sair desse escopo e poder acessar o scopo do score e aparecer na tela ????
+                }) // verificar o pq as vezes some mais de uma vacina no canvas, quando era pra sumir apenas a da colisao
         }
     }
+
+
     function score(points){ 
         ctx.beginPath();
         ctx.fillStyle= 'rgb(0, 0, 0)';
@@ -247,6 +237,7 @@ window.onload = () => {
             ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
         }
         
+        //fazer o restart funcionar 
         /* clickRestart(restart){
             restart.addEventListener("click", ()=>{
                 console.log("ta funcinando o click")
@@ -260,8 +251,8 @@ window.onload = () => {
 
     }
      
-    const gameOverImg = new GameOver('../images/game-over-trans.png' , 400,85,200,200);
-    const restartImg = new GameOver('../images/restart.png' , 480,280,40,40);
+    const gameOverImg = new GameOver('../images/game-over-trans.png' , 400,75,200,200);
+    const restartImg = new GameOver('../images/restart.png' , 480,270,40,40);
     
 
     function checkGameOver(){
@@ -269,10 +260,10 @@ window.onload = () => {
             return player.crashWith(obstacle);
         });
         if (crashed){
-            //cancelAnimationFrame(animationId);
-            //clearCanvas();
-            //gameOverImg.draw();
-            //restartImg.draw();
+            cancelAnimationFrame(animationId);
+            clearCanvas();
+            gameOverImg.draw();
+            restartImg.draw();
         }
     
     }
@@ -288,5 +279,5 @@ window.onload = () => {
 //updateCanvas(){} -- OK
 //colidir com um obstaculo -- ok
 //pontuação de acordo com o obstaculo vacina
-//score do jogo
+//score do jogo --ok 
 //game over -- ok
