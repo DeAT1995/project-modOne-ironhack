@@ -7,9 +7,9 @@
 // criar obstaculos aleatórios na tela -- ok
 //definir velocidade dos obstaculos --ok
 
-//arrumar os obstaculos 
+//arrumar os obstaculos --ok
     //vacina soma ponto
-    //cloroquina GAME OVER
+    //cloroquina GAME OVER --ok
 //rodar um score
 
 
@@ -38,17 +38,19 @@ window.onload = () => {
         player.draw();
         updateCanvas();
         updateObstacles();
+        score();
     }
 
     const canvas = document.getElementById("game-box");
     const ctx = canvas.getContext('2d');
     let frames = 0;
-    let animationId = null; //criado
+    let animationId = null; 
 
     function updateCanvas(){
         frames += 1;
         clearCanvas();
         player.draw();
+       // score();
         updateObstacles();
         //score();
         animationId = requestAnimationFrame(updateCanvas);
@@ -116,7 +118,7 @@ window.onload = () => {
             this.left() > obstacle.right());
           }
     }
-    const player = new Emu('./images/emu.png' , 15,142,100,100);
+    const player = new Emu('./images/emu.png' , 15,142,90,90);
 
 
     class Obstacle {
@@ -171,7 +173,7 @@ window.onload = () => {
         if ( numberVar % 2) {
          return obstacleVacina.push(new Obstacle('./images/vaccine-icon.png' , eixoX, eixoY, 70, 70));
         } else {
-        return obstacles.push(new Obstacle('./images/medicini-icon-pill.png' , eixoX, eixoY, 80, 80));}  
+        return obstacles.push(new Obstacle('./images/medicini-icon-pill.png' , eixoX, eixoY, 70, 70));}  
        }
 
     function updateObstacles(){
@@ -212,15 +214,35 @@ window.onload = () => {
 
         }
         draw(){
-            console.log("desenha saporra")
             ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
         }
         
       
     }
      
-    const gameOver = new GameOver('../images/game-over-trans.png' , 390,90,200,200);
+    const gameOver = new GameOver('../images/game-over-trans.png' , 400,90,200,200);
 
+
+    class Restart {
+        constructor(source, x, y, w, h){
+            this.posX= x;
+            this.posY= y;
+            this.width= w;
+            this.height=h;
+
+            const img = new Image();
+            img.src = source;
+            this.img = img;
+
+        }
+        draw(){
+            ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
+        }
+        
+      
+    }
+     
+    const restart = new Restart('../images/restart.png' , 480,275,40,40);
     
     function checkGameOver(){
         const crashed = obstacles.some(function(obstacle){
@@ -230,8 +252,8 @@ window.onload = () => {
             console.log("crashed")
             cancelAnimationFrame(animationId);
             clearCanvas();
-            //criar o game over
             gameOver.draw();
+            restart.draw();
         }
     
     }
@@ -240,9 +262,9 @@ window.onload = () => {
 
     /*function score(){
         const points = Math.floor(this.frames / 5);
-        this.context.font = '18px serif';
-        this.context.fillStyle = 'black';
-        this.context.fillText(`Score: ${points}`, 350, 50);
+        this.ctx.font = '18px serif';
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillText(`Score: ${points}`, 350, 50);
     }*/
     
 
