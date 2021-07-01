@@ -8,12 +8,16 @@
 //definir velocidade dos obstaculos --ok
 
 //arrumar os obstaculos --ok
+    //fazer um score
     //vacina soma ponto
+    //fazer a img da vacina sumir quando bater na ema 
     //cloroquina GAME OVER --ok
-//rodar um score
+    //restart criado --ok 
+    //fazer a tela voltar do inicio no restart
+    //rodar um score
 
 
-//adicionar um evento de mpuse quando passar em cima dos li's para dar info sobre o jogo
+//adicionar um evento de mouse quando passar em cima dos li's para dar info sobre o jogo
 //redigir orientações sobre o jogo no README.md
 
 
@@ -38,7 +42,7 @@ window.onload = () => {
         player.draw();
         updateCanvas();
         updateObstacles();
-        score();
+        //score();
     }
 
     const canvas = document.getElementById("game-box");
@@ -50,9 +54,8 @@ window.onload = () => {
         frames += 1;
         clearCanvas();
         player.draw();
-       // score();
         updateObstacles();
-        //score();
+        score();
         animationId = requestAnimationFrame(updateCanvas);
         checkGameOver();
         checkVacine();
@@ -72,7 +75,7 @@ window.onload = () => {
             this.posY= y;
             this.width= w;
             this.height=h;
-            this.speed = 15;
+            this.speed = 20;
 
             const img = new Image();
             img.src = source;
@@ -88,7 +91,7 @@ window.onload = () => {
             }
         }
         moveUp() {
-            if (this.posY < 280) {
+            if (this.posY < 290) {
             this.posY += this.speed;
         }
         }
@@ -159,7 +162,6 @@ window.onload = () => {
         }
     }
 
-    const obstacleCloroquina = [];
     const obstacleVacina = [];
     const obstacles = [];
 
@@ -201,6 +203,21 @@ window.onload = () => {
         }   
     }
 
+        /*
+
+    }*/
+
+    function score(points){
+        ctx.beginPath();
+        ctx.fillStyle= 'rgb(0, 0, 0)';
+        ctx.rect(425,355,130,35);
+        ctx.fill();
+        ctx.font = "15px serif";
+        ctx.fillStyle = "rgba(0, 245, 33, 0.6)";
+        ctx.fillText("SCORE:" + points, 435, 377);
+
+    }
+
     class GameOver {
         constructor(source, x, y, w, h){
             this.posX= x;
@@ -217,56 +234,35 @@ window.onload = () => {
             ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
         }
         
-      
-    }
-     
-    const gameOver = new GameOver('../images/game-over-trans.png' , 400,90,200,200);
+        /* clickRestart(restart){
+            restart.addEventListener("click", ()=>{
+                console.log("ta funcinando o click")
+                //aqui deve executar uma função para reiniciar o jogo
+                // como faço para o jogo executar do inicio como no f5 ?
+            })
+        }*/
+        //posso colocar um addEventListener dentro dessa imagem, para ao click o jogo começar novamente ?
 
-
-    class Restart {
-        constructor(source, x, y, w, h){
-            this.posX= x;
-            this.posY= y;
-            this.width= w;
-            this.height=h;
-
-            const img = new Image();
-            img.src = source;
-            this.img = img;
-
-        }
-        draw(){
-            ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
-        }
-        
-      
-    }
-     
-    const restart = new Restart('../images/restart.png' , 480,275,40,40);
     
+
+    }
+     
+    const gameOverImg = new GameOver('../images/game-over-trans.png' , 400,85,200,200);
+    const restartImg = new GameOver('../images/restart.png' , 480,280,40,40);
+    
+
     function checkGameOver(){
         const crashed = obstacles.some(function(obstacle){
             return player.crashWith(obstacle);
         });
         if (crashed){
-            console.log("crashed")
-            cancelAnimationFrame(animationId);
-            clearCanvas();
-            gameOver.draw();
-            restart.draw();
+            //cancelAnimationFrame(animationId);
+            //clearCanvas();
+            //gameOverImg.draw();
+            //restartImg.draw();
         }
     
     }
-
-
-
-    /*function score(){
-        const points = Math.floor(this.frames / 5);
-        this.ctx.font = '18px serif';
-        this.ctx.fillStyle = 'black';
-        this.ctx.fillText(`Score: ${points}`, 350, 50);
-    }*/
-    
 
 }
 
@@ -277,7 +273,7 @@ window.onload = () => {
 //as teclas estão ao contrario, arrow up, ta levando pra baixo e arrow down pra cima  --OK
 //criar limite para o emu nao passar a tela -- ok
 //updateCanvas(){} -- OK
-//colidir com um obstaculo
-//pontuação de acordo com o obstaculo
+//colidir com um obstaculo -- ok
+//pontuação de acordo com o obstaculo vacina
 //score do jogo
-//game over
+//game over -- ok
