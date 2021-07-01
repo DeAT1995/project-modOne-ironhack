@@ -58,7 +58,8 @@ window.onload = () => {
         score();
         animationId = requestAnimationFrame(updateCanvas);
         checkGameOver();
-        checkVacine();
+        //checkVacine();
+        takeVacine();
         
 
     }
@@ -207,15 +208,27 @@ window.onload = () => {
 
     }*/
 
-    function score(points){
+    function takeVacine(){
+        console.log("crash with vacina")
+        let taked = obstacleVacina.some(function(vacine){
+            return player.crashWith(vacine);
+        });
+
+        if (taked){
+            obstacleVacina.forEach((element,index) =>{
+                obstacleVacina.splice(index, 1);
+                })
+        }
+    }
+    function score(points){ 
         ctx.beginPath();
         ctx.fillStyle= 'rgb(0, 0, 0)';
         ctx.rect(425,355,130,35);
         ctx.fill();
         ctx.font = "15px serif";
         ctx.fillStyle = "rgba(0, 245, 33, 0.6)";
-        ctx.fillText("SCORE:" + points, 435, 377);
-
+        ctx.fillText("SCORE:" + points, 435, 377); //como faço pra definir esse points como o score do game ???
+        // como deixar o score com o borderradius ?? ctx.fillStyle.border
     }
 
     class GameOver {
