@@ -40,6 +40,13 @@
 // fazer o refresh funcionar
 // verificar como faço para a tela reinicar quando clicar no restart
 
+//função para fazer um texto ser exibido quando o mouse entrar nos links do navbar
+function infoGame(e) {
+    document.getElementsByClassName("nav-link").addEventListener("onmouseenter", (e)=>{
+    console.log("mouse entrou");
+})
+
+}
 
 window.onload = () => {
     document.getElementById("start-game").onclick = () => {

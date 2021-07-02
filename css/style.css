@@ -101,8 +101,8 @@ li {
   }
 
   #game-canvas{
-    margin-left: 13%;
-    margin-right: 15%;
+    margin-left: 175px;
+    margin-right: 175px;
     padding-top: 16px;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
   }
