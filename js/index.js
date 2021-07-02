@@ -1,4 +1,3 @@
-
 //A SER FEITO
 
 //começar o jogo -- ok
@@ -22,6 +21,24 @@
 //redigir orientações sobre o jogo no README.md
 //fazer a apresentação em slides do jogo 
 
+
+
+//funcções que provavelmente existirão
+//function clearCanvas(){} -- ok
+//as teclas estão ao contrario, arrow up, ta levando pra baixo e arrow down pra cima  --OK
+//criar limite para o emu nao passar a tela -- ok
+//updateCanvas(){} -- OK
+//colidir com um obstaculo -- ok
+//pontuação de acordo com o obstaculo vacina ---ok
+//score do jogo --ok 
+//game over -- ok
+
+//coloquei a vacina pra sumir quando colide com o player --ok
+//averifguar o pq as vezes buga e some mais de uma vacina as vezes
+//criei o game over --ok
+//coloquei o refresh ---ok
+// fazer o refresh funcionar
+// verificar como faço para a tela reinicar quando clicar no restart
 
 
 window.onload = () => {
@@ -78,6 +95,7 @@ window.onload = () => {
             this.width= w;
             this.height=h;
             this.speed = 20;
+    
 
             const img = new Image();
             img.src = source;
@@ -93,7 +111,7 @@ window.onload = () => {
             }
         }
         moveUp() {
-            if (this.posY < 290) {
+            if (this.posY < 260) {
             this.posY += this.speed;
         }
         }
@@ -170,7 +188,7 @@ window.onload = () => {
     
     function createObstacle(){
         const eixoX = 1000;//final do canvas
-        let eixoY = Math.floor(Math.random() * 400); //variável, número aleatorio multiplicado pelo tamanho do canvas no eixo y
+        let eixoY = Math.floor(Math.random() * 300); //variável, número aleatorio multiplicado pelo tamanho do canvas no eixo y
 
         let numberVar = Math.floor(Math.random()*400); // variável para criar um número aleatório para poder revesar os obstaculos a serem apresnetados na tela 
         
@@ -194,7 +212,7 @@ window.onload = () => {
         }
     }
 
-
+    let points = 0;
        
     function takeVacine(){
         let taked = obstacleVacina.some(function(vacine){
@@ -204,22 +222,25 @@ window.onload = () => {
         if (taked){
             obstacleVacina.forEach((element,index) =>{
                 obstacleVacina.splice(index, 1);
-                //points += 1; // como faço para essa pontuação sair desse escopo e poder acessar o scopo do score e aparecer na tela ????
+                points += 1; // como faço para essa pontuação sair desse escopo e poder acessar o scopo do score e aparecer na tela ????
                 }) // verificar o pq as vezes some mais de uma vacina no canvas, quando era pra sumir apenas a da colisao
         }
     }
 
-
-    function score(points){ 
+    
+    function score(){ 
         ctx.beginPath();
         ctx.fillStyle= 'rgb(0, 0, 0)';
-        ctx.rect(425,355,130,35);
+        ctx.rect(430,325,125,30);
         ctx.fill();
         ctx.font = "15px serif";
-        ctx.fillStyle = "rgba(0, 245, 33, 0.6)";
-        ctx.fillText("SCORE:" + points, 435, 377); //como faço pra definir esse points como o score do game ???
+        ctx.fillStyle = "rgba(0, 255, 33, 0.6)";
+        ctx.fillText("SCORE: " + points, 455, 343); //como faço pra definir esse points como o score do game ???
+
         // como deixar o score com o borderradius ?? ctx.fillStyle.border
     }
+
+    
 
     class GameOver {
         constructor(source, x, y, w, h){
@@ -237,23 +258,32 @@ window.onload = () => {
             ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
         }
         
-        //fazer o restart funcionar 
-        /* clickRestart(restart){
-            restart.addEventListener("click", ()=>{
-                console.log("ta funcinando o click")
-                //aqui deve executar uma função para reiniciar o jogo
-                // como faço para o jogo executar do inicio como no f5 ?
-            })
-        }*/
-        //posso colocar um addEventListener dentro dessa imagem, para ao click o jogo começar novamente ?
-
-    
-
     }
      
-    const gameOverImg = new GameOver('../images/game-over-trans.png' , 400,75,200,200);
-    const restartImg = new GameOver('../images/restart.png' , 480,270,40,40);
+   //criado para o canvas
+   canvas.addEventListener("click", (event)=>{
+    console.log(event.offsetX);
+    console.log(event.offsetY);
+       let x = 480;
+       let y = 270;
+        if (event.offsetX || event.offsetY) {
+            x = event.offsetX;
+            y = event.offsetY;
+        } else {
+            //x = ;
+            //y = ;
+        }
+
+
+    } );
+
+
+    const gameOverImg = new GameOver('../images/game-over-trans.png' , 400,80,200,200);
+    //const restartImg = new GameOver('../images/restart.png' , 480,270,40,40);
     
+    /*let clickRestart = restartImg.addEventListener("click", ()=>{
+        return true;
+    });*/
 
     function checkGameOver(){
         const crashed = obstacles.some(function(obstacle){
@@ -271,13 +301,3 @@ window.onload = () => {
 }
 
    
-
-//funcções que provavelmente existirão
-//function clearCanvas(){} -- ok
-//as teclas estão ao contrario, arrow up, ta levando pra baixo e arrow down pra cima  --OK
-//criar limite para o emu nao passar a tela -- ok
-//updateCanvas(){} -- OK
-//colidir com um obstaculo -- ok
-//pontuação de acordo com o obstaculo vacina
-//score do jogo --ok 
-//game over -- ok
