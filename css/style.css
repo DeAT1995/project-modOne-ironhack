@@ -86,7 +86,8 @@ li {
     padding: 8px;
     margin-left: 44%;
     margin-top: 15px;
-  } 
+    width: 150px ;
+    } 
 
   #game-box {
     border: 7px solid rgb(2, 2, 2);

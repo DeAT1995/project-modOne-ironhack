@@ -41,13 +41,6 @@
 // verificar como faço para a tela reinicar quando clicar no restart
 // fazer as informações do jogo aoarecerem quando passar o mouse em cima 
 //função para fazer um texto ser exibido quando o mouse entrar nos links do navbar
-function infoGame() {
-    document.getElementsByClassName("nav-link").addEventListener("onmouseenter", ()=>{
-    console.log("mouse entrou");
-})
-
-}
-
 
 window.onload = () => {
     document.getElementById("start-game").onclick = () => {
@@ -70,6 +63,26 @@ window.onload = () => {
         player.draw();
         updateCanvas();
         updateObstacles();
+        restartGame()
+    }
+
+    function restartGame() {
+        let hideButton = document.getElementById("start-game");
+        hideButton.innerHTML="RESTART";
+        hideButton.addEventListener("click", () =>{
+            points = 0;
+            obstacles = [];
+            obstacleVacina = [];
+            clearCanvas();
+            player.draw();
+            updateCanvas();
+            updateObstacles();
+            // //fazer uma função para o botão restart
+            
+
+            console.log(obstacles);
+            console.log(obstacleVacina);
+        })
     }
 
     const canvas = document.getElementById("game-box");
@@ -93,6 +106,7 @@ window.onload = () => {
 
     function clearCanvas(){
         ctx.clearRect(0,0, canvas.width, canvas.height);
+
     }
 
     
@@ -157,7 +171,7 @@ window.onload = () => {
             this.posX= x;
             this.posY= y;
             this.width= w;
-            this.height=h;
+            this.height= h;
             this.speed = 2;
 
             const img = new Image();
@@ -190,8 +204,8 @@ window.onload = () => {
         }
     }
 
-    const obstacleVacina = [];
-    const obstacles = [];
+    let obstacleVacina = [];
+    let obstacles = [];
 
     
     function createObstacle(){
@@ -244,7 +258,6 @@ window.onload = () => {
         ctx.fillStyle = "rgba(0, 255, 33, 0.6)";
         ctx.fillText("SCORE: " + points, 455, 343); //como faço pra definir esse points como o score do game ???
 
-        // como deixar o score com o borderradius ?? ctx.fillStyle.border
     }
 
     
@@ -266,31 +279,8 @@ window.onload = () => {
         }
         
     }
-     
-   //criado para o canvas
-   canvas.addEventListener("click", (event)=>{
-    console.log(event.offsetX);
-    console.log(event.offsetY);
-       let x = 480;
-       let y = 270;
-        if (event.offsetX || event.offsetY) {
-            x = event.offsetX;
-            y = event.offsetY;
-        } else {
-            //x = ;
-            //y = ;
-        }
-
-
-    } );
-
-
+   
     const gameOverImg = new GameOver('../images/game-over-trans.png' , 400,80,200,200);
-    //const restartImg = new GameOver('../images/restart.png' , 480,270,40,40);
-    
-    /*let clickRestart = restartImg.addEventListener("click", ()=>{
-        return true;
-    });*/
 
     function checkGameOver(){
         const crashed = obstacles.some(function(obstacle){
@@ -300,11 +290,12 @@ window.onload = () => {
             cancelAnimationFrame(animationId);
             clearCanvas();
             gameOverImg.draw();
-            restartImg.draw();
+            score();
         }
     
     }
 
+    
 }
 
    
