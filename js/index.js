@@ -16,7 +16,7 @@ window.onload = () => {
     }
   });
 
-  
+  //var at the game
   const canvas = document.getElementById("game-box");
   const ctx = canvas.getContext("2d");
   let frames = 0;
