@@ -34,19 +34,20 @@
 //game over -- ok
 
 //coloquei a vacina pra sumir quando colide com o player --ok
-//averifguar o pq as vezes buga e some mais de uma vacina as vezes
 //criei o game over --ok
 //coloquei o refresh ---ok
-// fazer o refresh funcionar
+//averifguar o pq as vezes buga e some mais de uma vacina as vezes
+// transformar o botão do start game em restart :D
 // verificar como faço para a tela reinicar quando clicar no restart
-
+// fazer as informações do jogo aoarecerem quando passar o mouse em cima 
 //função para fazer um texto ser exibido quando o mouse entrar nos links do navbar
-function infoGame(e) {
-    document.getElementsByClassName("nav-link").addEventListener("onmouseenter", (e)=>{
+function infoGame() {
+    document.getElementsByClassName("nav-link").addEventListener("onmouseenter", ()=>{
     console.log("mouse entrou");
 })
 
 }
+
 
 window.onload = () => {
     document.getElementById("start-game").onclick = () => {
@@ -157,7 +158,7 @@ window.onload = () => {
             this.posY= y;
             this.width= w;
             this.height=h;
-            this.speed = 3;
+            this.speed = 2;
 
             const img = new Image();
             img.src = source;
@@ -200,9 +201,9 @@ window.onload = () => {
         let numberVar = Math.floor(Math.random()*400); // variável para criar um número aleatório para poder revesar os obstaculos a serem apresnetados na tela 
         
         if ( numberVar % 2) {
-         return obstacleVacina.push(new Obstacle('./images/vaccine-icon.png' , eixoX, eixoY, 70, 70));
+         return obstacleVacina.push(new Obstacle('./images/vaccine-icon.png' , eixoX, eixoY, 60, 60));
         } else {
-        return obstacles.push(new Obstacle('./images/medicini-icon-pill.png' , eixoX, eixoY, 70, 70));}  
+        return obstacles.push(new Obstacle('./images/cloroquina-trans.png' , eixoX, eixoY, 50, 80));}  
        }
 
     function updateObstacles(){
@@ -214,7 +215,7 @@ window.onload = () => {
             obstacle.move();
             obstacle.draw();
             });
-        if (frames % 80 === 0){ 
+        if (frames % 150 === 0){ 
             createObstacle();
         }
     }
@@ -222,15 +223,14 @@ window.onload = () => {
     let points = 0;
        
     function takeVacine(){
-        let taked = obstacleVacina.some(function(vacine){
-            return player.crashWith(vacine);
-        });
-
-        if (taked){
-            obstacleVacina.forEach((element,index) =>{
-                obstacleVacina.splice(index, 1);
-                points += 1; // como faço para essa pontuação sair desse escopo e poder acessar o scopo do score e aparecer na tela ????
-                }) // verificar o pq as vezes some mais de uma vacina no canvas, quando era pra sumir apenas a da colisao
+            for ( let i=0; i < obstacleVacina.length ; i += 1){ // loop para passar por cada indice do array de vacina
+            let taken = player.crashWith(obstacleVacina[i]) // cofnere a colisao com o obstaculo
+            
+            if (taken){ // se colidiu ele vai somar o points e remover o determinado obstaculo que colidiu 
+                points += 1
+                obstacleVacina.splice(i, 1);
+                
+            }
         }
     }
 
