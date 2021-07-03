@@ -33,11 +33,11 @@
 //coloquei a vacina pra sumir quando colide com o player --ok
 //criei o game over --ok
 //coloquei o refresh ---ok
-//averifguar o pq as vezes buga e some mais de uma vacina as vezes
-// transformar o botão do start game em restart :D
-// verificar como faço para a tela reinicar quando clicar no restart
-// fazer as informações do jogo aoarecerem quando passar o mouse em cima
-//função para fazer um texto ser exibido quando o mouse entrar nos links do navbar
+//averifguar o pq as vezes buga e some mais de uma vacina as vezes --ok
+// transformar o botão do start game em restart :D --ok
+// verificar como faço para a tela reinicar quando clicar no restart --ok
+// fazer as informações do jogo aoarecerem quando passar o mouse em cima --ok
+//função para fazer um texto ser exibido quando o mouse entrar nos links do navbar --ok
 
 window.onload = () => {
   document.getElementById("start-game").onclick = () => {

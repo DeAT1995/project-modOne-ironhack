@@ -29,9 +29,10 @@ body, html {
 
 .nav-logo {
   font-size: 75px;
-  font-weight: 500;
+  font-weight: 600;
   color: #c24a9a;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
+  margin-left: -5px;
 }
 
 .logo-img{
@@ -42,16 +43,38 @@ body, html {
 
 li {
     list-style: none;
-    text-decoration: none;
 }
 
-.nav-link{
+.nav-link-edited{
   font-size: 1.8rem;
   font-weight: 100;
-  color: #4a25af;
+  color: #aa207c;
   text-decoration: underline;
-  margin-top: 5%;
-  margin-left: 1rem;
+  margin-top: 10%;
+  margin-right: 2rem;
+}
+
+.btn{
+  margin-left: 35px;
+  margin-top: 25px;
+}
+
+.card{
+  margin-left: 35px;
+}
+
+.card-title{
+  text-decoration: underline;
+  margin-left: -15px;
+  letter-spacing: 1px;
+
+}
+
+.card-text{
+  text-align: justify;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-left: -15px;
+  margin-right: 15px;
 }
 
 #start-game{
