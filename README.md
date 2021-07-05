@@ -4,7 +4,7 @@
 
  ![Start Screen](./images/screen-game.png)
 
- Click [HERE](//link do jogo) to play *Save the Emu*
+ Click [HERE](https://deat1995.github.io/project-one-ironhack/) to play *Save the Emu*
 
 ### Introduction
 
