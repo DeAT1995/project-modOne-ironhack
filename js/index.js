@@ -235,7 +235,7 @@ window.onload = () => {
 
   //draw the game over image
   const gameOverImg = new GameOver(
-    "../images/game-over-trans.png",
+    "./images/game-over-trans.png",
     400,
     80,
     200,
