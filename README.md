@@ -31,10 +31,14 @@ Emu is the last of its kind living in the LIZARB country. With the spread of a v
 * CANVAS
 * JAVASCRIPT 
 
-### To come
+### 📌 To come
 
 * GitHub pages hosted so you can play anywhere! (as long as internet is available).
 * If you like the game, let me know, maybe I'll try to improve something.
+
+## 📊 Presentation
+
+Click [HERE](https://slides.com/deboraaguiartavares/save-the-emu-project-01-ironhack/fullscreen) to see my project presentation.
 
 ### 🎁 Expressions of gratitude
 
@@ -42,4 +46,4 @@ Emu is the last of its kind living in the LIZARB country. With the spread of a v
 The teachers *Daniel K Albanez (DK), **Gabriel Sicuto* and *Júlia Foresti*, for the way that the content is presented in the classroom and the support of doubts inside and outside the classroom.
 Thank you very much for this first module 🤓.
 
-Developer: ⌨️ with ❤️ by Debora Tavares 😊
+Developer: ⌨️ with 💜 by Debora Tavares 🙋🏾
